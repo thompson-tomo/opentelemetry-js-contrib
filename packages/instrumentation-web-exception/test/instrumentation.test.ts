@@ -142,6 +142,9 @@ describe('ExceptionInstrumentation', () => {
         assert.strictEqual(event.attributes[ATTR_EXCEPTION_MESSAGE], 'Something happened!');
         assert.strictEqual(event.attributes[ATTR_EXCEPTION_TYPE], 'ValidationError');
         assert.strictEqual(event.attributes[ATTR_EXCEPTION_STACKTRACE], stack);
+        assert.isTrue(event.attributes.has('code.file.path'));
+        assert.isTrue(event.attributes.has('code.line.number'));
+        assert.isTrue(event.attributes.has('code.column.number'));
       }, 0);
     });
 

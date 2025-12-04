@@ -84,6 +84,10 @@ export class ExceptionInstrumentation extends InstrumentationBase<GlobalErrorsIn
       };
     }
 
+    errorAttributes['code.file.path'] = event.filename;
+    errorAttributes['code.line.number'] = event.lineno;
+    errorAttributes['code.column.number'] = event.colno;
+
     const errorLog: LogRecord = {
       eventName: EXCEPTION_EVENT_NAME,
       severityNumber: SeverityNumber.ERROR,
